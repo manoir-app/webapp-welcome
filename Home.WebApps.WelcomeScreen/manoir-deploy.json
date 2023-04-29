@@ -1,0 +1,6 @@
+{
+  "Kind": "WebApps",
+  "Name": "Welcome screen",
+  "ImageName": "webapps-welcomescreen",
+  "DockerFile": "DockerFile.Release"
+}

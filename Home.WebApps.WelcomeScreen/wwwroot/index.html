@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="scripts/jquery-3.5.1.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-sanitize.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/signalr.min.js"></script>
+    <script src="/common/manoir.js"></script>
+    <script src="WelcomeApp.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link href="/common/manoir.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet" />
+
+
+    <meta name="viewport" content="initial-scale=1;width:device-width" />
+
+</head>
+
+<body ng-app="WelcomeApp" ng-controller="DefaultPage" ng-class="currentPresence!=null && currentPresence.privacyModeActivated?'private':'not-private'">
+    <main class="full-background">
+        <div style="grid-column: 1 / span 8; grid-row: 1/ span 2" class="widget-container">
+            <manoir-header></manoir-header>
+        </div>
+        <div style="grid-column:9 / span 2;grid-row:1 / span 2" class="widget-container">
+            Global scenario
+        </div>
+        <div style="grid-column:9 / span 2;grid-row:3 / span 2" class="widget-container">
+            <div ng-show="currentPresence!=null">
+                <ul class="user-list">
+                    <li ng-repeat="main in currentPresence.mainUsers" ng-click="Events.startRemovePresence(main)">
+                        <img class="avatar" ng-src="{{main.imageUrl}}" />
+                    </li>
+                    <li ng-repeat="guest in currentPresence.guests" ng-click="Events.startRemovePresence(guest)">
+                        <img class="avatar" ng-src="{{guest.imageUrl}}" />
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="currentPresence==null">
+            </div>
+        </div>
+
+        <div style="grid-column: 1 / span 10; grid-row: 12/ span 4" class="widget-container">
+            Event en cours / prochain
+        </div>
+    </main>
+</body>
+</html>
